@@ -1,0 +1,14 @@
+def findMaxAverage(nums, k) -> float:
+        window_sum = 0
+        max_avg = 0
+        for i in range(k):
+            window_sum += nums[i]
+            max_avg = window_sum / k
+       
+        for right in range(k, len(nums)):
+            window_sum += nums[right]
+            window_sum -= nums[right - k]
+            avg = window_sum / k
+            if avg > max_avg:
+                max_avg = avg 
+        return max_avg
